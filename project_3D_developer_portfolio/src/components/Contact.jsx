@@ -1,0 +1,105 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+import { styles } from "../styles";
+import { EarthCanvas } from "./canvas";
+import { SectionWrapper } from "../hoc";
+import { slideIn } from "../utils/motion";
+
+const Contact = () => {
+  const contactLinks = [
+    {
+      name: "LinkedIn",
+      icon: (
+        <svg className="w-8 h-8 text-[#0A66C2] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      ),
+      url: "https://www.linkedin.com/in/vu-ho%C3%A0ng-179559248/",
+      handle: "Victor Huynh",
+      color: "hover:shadow-[0_0_15px_rgba(10,102,194,0.5)] hover:border-[#0A66C2]",
+    },
+    {
+      name: "Facebook",
+      icon: (
+        <svg className="w-8 h-8 text-[#1877F2] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      ),
+      url: "https://www.facebook.com/hhoangvu3103", 
+      handle: "Huynh Hoang Vu",
+      color: "hover:shadow-[0_0_15px_rgba(24,119,242,0.5)] hover:border-[#1877F2]",
+    },
+    {
+      name: "GitHub",
+      icon: (
+        <svg className="w-8 h-8 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+          <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+        </svg>
+      ),
+      url: "https://github.com/HuynhHoangvu", 
+      handle: "HuynhHoangvu",
+      color: "hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:border-white",
+    },
+    {
+      name: "Gmail",
+      icon: (
+        <svg className="w-8 h-8 text-[#EA4335] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-1.356 1.547-2.143 2.654-1.313L12 11.16l9.346-7.016C22.453 3.314 24 4.101 24 5.457z"/>
+        </svg>
+      ),
+      url: "mailto:hhoangvu001@gmail.com",
+      handle: "hhoangvu001@gmail.com",
+      color: "hover:shadow-[0_0_15px_rgba(234,67,53,0.5)] hover:border-[#EA4335]",
+    },
+  ];
+
+  return (
+    <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
+      <motion.div
+        variants={slideIn("left", "tween", 0.2, 1)}
+        className='flex-[0.75] bg-black-100 p-8 rounded-2xl flex flex-col justify-center'
+      >
+        <p className={styles.sectionSubText}>Get in touch</p>
+        <h3 className={styles.sectionHeadText}>Contact.</h3>
+
+        <p className='mt-4 text-secondary text-[17px] leading-[30px]'>
+          I'm always open to discussing new projects, creative ideas, or opportunities to collaborate on innovative products. Feel free to connect with me through any of the platforms below!
+        </p>
+
+        <div className='mt-10 flex flex-col gap-4'>
+          {contactLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              className={`group flex items-center gap-5 p-4 bg-tertiary border border-transparent rounded-xl transition-all duration-300 ${link.color}`}
+            >
+              <div className='flex items-center justify-center p-1 bg-black-200 rounded-lg'>
+                {link.icon}
+              </div>
+              <div className='flex flex-col'>
+                <span className='text-secondary text-[12px] font-medium uppercase tracking-wider'>
+                  {link.name}
+                </span>
+                <span className='text-white text-[16px] font-semibold group-hover:text-white transition-colors duration-300'>
+                  {link.handle}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div
+        variants={slideIn("right", "tween", 0.2, 1)}
+        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+      >
+        <EarthCanvas />
+      </motion.div>
+    </div>
+  );
+};
+
+export default SectionWrapper(Contact, "contact");
